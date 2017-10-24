@@ -3,21 +3,27 @@ require "./lib/attendee"
 require "pry"
 
 class Queue
+  attr_reader :data
+
   def initialize
-  @queue     = []
-  @attendees = []
+    @data = []
   end
 
-  def load(filename = "full_event_attendees.csv")
-  contents = CSV.open filename, headers: true, header_converters: :symbol
-  contents.each do |row|
-    # binding.pry
-    @attendees << Attendee.new(row)
-    binding.pry
-    end
+  def count
+    count = data.count
   end
 end
 
-Queue.new.load
+#   def load(filename = "full_event_attendees.csv")
+#   contents = CSV.open filename, headers: true, header_converters: :symbol
+#   contents.map do |row|
+#     # binding.pry
+#     @attendees << Attendee.new(row)
+#     binding.pry
+#     end
+#   end
+# end
+
+# Queue.new.load
 
 # line 12-15 load?

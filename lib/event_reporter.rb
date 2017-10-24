@@ -3,7 +3,36 @@ require "pry"
 require "./lib/attendee"
 require "./lib/queue"
 
-queue = Queue.new
+class EventReporter
+  attr_reader :queue
+
+  def initialize
+  @queue     = Queue.new
+  @attendees = []
+  end
+
+  def load(filename = "full_event_attendees.csv")
+    contents = CSV.open filename, headers: true, header_converters: :symbol
+    contents.map do |row|
+      # binding.pry
+    @attendees << Attendee.new(row)
+    # binding.pry
+    end
+  end
+
+  def find(attribute, criteria)
+    you = @attendees.find_all do |attendee|
+      attendee.first_name == criteria
+    end
+    queue.data << you
+    binding.pry
+  end
+
+
+
+
+
+end
 
 #commands: load = Erase any loaded data and parse the specified file.
               #  If no filename is given, default to full_event_attendees.csv.
