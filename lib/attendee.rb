@@ -1,6 +1,5 @@
 class Attendee
-  attr_reader :reg_date,
-              :first_name,
+  attr_reader :first_name,
               :last_name,
               :email_address,
               :home_phone,
@@ -10,8 +9,6 @@ class Attendee
               :zipcode
 
   def initialize(attribute)
-    @id            = attribute[:id]
-    @reg_date      = attribute[:reg_date]
     @first_name    = attribute[:first_name]
     @last_name     = attribute[:last_name]
     @email_address = attribute[:email_address]
